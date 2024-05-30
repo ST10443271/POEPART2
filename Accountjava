@@ -1,0 +1,146 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package prog5121.poepart1;
+
+/**
+ *
+ * @author Home
+ */
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import login.java.Task;
+import static prog5121.poepart1.Task.checkTaskDescription;
+
+
+public class Account {
+    static String userName = "";
+    static String regPassword = "";
+    static String usernameLogin = "";
+    static String passwordLogin = "";
+    static String firstName = "";
+    static String lastName = "";
+    static String taskDescription = "";
+    static String taskName = "";
+    private static String checkTaskDescription;
+
+    public static void main(String[] args) {
+        firstName = JOptionPane.showInputDialog("Please enter your first name.");
+        lastName = JOptionPane.showInputDialog("Please enter your last name.");
+        userName = JOptionPane.showInputDialog("Please enter your username");
+        while(!Login.checkUserName(userName)){
+            JOptionPane.showMessageDialog(null, "Wrong username, try again");
+            userName = JOptionPane.showInputDialog("Please enter your username");
+        }
+        regPassword = JOptionPane.showInputDialog("Please enter your password");
+        while(!Login.checkPasswordComplexity(regPassword)){
+            JOptionPane.showMessageDialog(null, "Incorrect password, try again");
+            regPassword = JOptionPane.showInputDialog("Please enter your password");
+        }
+        JOptionPane.showMessageDialog(null, Login.registerUser());
+        usernameLogin = JOptionPane.showInputDialog("Please enter your username");
+        passwordLogin = JOptionPane.showInputDialog("Please enter your password");
+        while(!Login.loginUser(userName, regPassword, usernameLogin, passwordLogin)){
+            JOptionPane.showMessageDialog(null, Login.returnLoginStatus(userName, regPassword));
+            usernameLogin = JOptionPane.showInputDialog("Please enter your username");
+            passwordLogin = JOptionPane.showInputDialog("Please enter your password");
+        }
+        JOptionPane.showMessageDialog(null, Login.returnLoginStatus(userName, "You have successfully login in"));
+        JOptionPane.showMessageDialog(null, "Welcome to Easykanban");
+        List<String> optionList = new ArrayList<>();
+        optionList.add("Add tasks");
+        optionList.add("Show report");
+        optionList.add("Quit");
+        Object[] options = optionList.toArray();
+        int value = JOptionPane.showOptionDialog(null, "Please select your encryption Algorithm:(1, 2 or 3)\n 1. Add tasks \n 2. Show report \n 3. Quit", "Pick", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, optionList.get(0));
+        String opt = optionList.get(value);
+        JOptionPane.showMessageDialog(null, "You picked " + opt);
+        String choice = opt;
+        switch (choice) {
+            case "Add tasks":
+                int numTasks = Integer.parseInt(JOptionPane.showInputDialog("Enter the number of tasks you want to enter:"));
+                for (int i = 0; i < numTasks; i++) {
+                    String task = JOptionPane.showInputDialog("Enter task " + (i + 1) + ":");
+                    JOptionPane.showMessageDialog(null, "Task " + (i + 1) + ": " + task);
+                }
+                JOptionPane.showMessageDialog(null, "All tasks have been entered!");
+                taskDescription = JOptionPane.showInputDialog("Please enter a task description of less than 50 characters.");
+            {
+                
+                while(!Task.checkTaskDescription(checkTaskDescription)){
+                    JOptionPane.showMessageDialog(null, "Please enter a task description of less than 50 characters.");
+                    checkTaskDescription = JOptionPane.showInputDialog("Task successfully captured");
+                }
+            }
+                break;
+
+            case "Show report":
+                JOptionPane.showMessageDialog(null, "Coming Soon");
+                break;
+            case "Quit":
+                JOptionPane.showMessageDialog(null, "Goodbye!");
+                System.exit(0);
+        }
+        String taskNumber = null;
+         taskName = JOptionPane.showInputDialog("Enter Task Name for Task " + taskNumber + ":");
+            taskDescription = JOptionPane.showInputDialog("Enter Task Description (max 50 characters) for Task " + taskNumber + ":");
+            checkTaskDescription(taskDescription);
+        String developerDetails = JOptionPane.showInputDialog("Enter Developer Details for Task " + taskNumber + ":");
+        int taskDuration = Integer.parseInt(JOptionPane.showInputDialog("Enter Task Duration (in hours) for Task " + taskNumber + ":"));
+        String taskStatus = (String) JOptionPane.showInputDialog(null, "Choose Task Status for Task " + taskNumber + ":", "Task Status", JOptionPane.QUESTION_MESSAGE, null, new String[]{"To Do", "Done", "Doing"}, "To Do");
+          
+        
+        
+        
+    }
+    
+    
+
+
+    
+
+   
+}
+
+
+
+
+
+//Code attribution
+//This method was taken from stackoverflow
+//https://stackoverflow.com/questions/21059080/joptionpane-input-dialog-menu
+//MadProgrammer
+//https://stackoverflow.com/users/992484/madprogrammer
+        
+        
+        
+         
+        
+    //Code attribution
+    //This method was taken from youtube
+    //TheTigerTutorials
+    //https://www.youtube.com/watch?v=E3JQrxxQKIo
+    
+   
+      
+   
+     //Code attribution
+     //This method was taken from stack overflow
+     //https://stackoverflow.com/questions/20597229/joptionpane-and-while-loop-user-input-addition
+     //DaoWen
+     //https://stackoverflow.com/users/1427124/daowen
+     
+        
+        
+            
+           
+   
+
+
+
+
+    
+    
+
